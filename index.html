@@ -32,7 +32,7 @@
 <h1>Welcome to RichuBot</h1>
 <p>Click the button below to access pairing options:</p>
 
-<button onclick="togglePairingOptions()">Get Pairing Options</button>
+<button id="getPairingOptionsButton">Get Pairing Options</button>
 
 <div id="pairingOptions">
     <h2>Pairing Code:</h2>
@@ -43,10 +43,10 @@
 </div>
 
 <script>
-    function togglePairingOptions() {
-        const options = document.getElementById('pairingOptions');
-        options.style.display = options.style.display === 'none' ? 'block' : 'none';
-    }
+document.getElementById('getPairingOptionsButton').onclick = function() {
+    const options = document.getElementById('pairingOptions');
+    options.style.display = options.style.display === 'none' ? 'block' : 'none';
+};
 </script>
 
 </body>
