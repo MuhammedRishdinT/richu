@@ -25,3 +25,20 @@ To get a copy of the project up and running on your local machine, follow these 
    ```bash
    git clone https://github.com/MuhammedRishdinT/richu.git
    cd richu
+
+
+# RichuBot WhatsApp Bot
+
+RichuBot is a WhatsApp bot that connects using a pairing code or a QR code.
+
+## Deploy to Koyeb
+
+Click the button below to deploy RichuBot on Koyeb:
+
+[![Deploy to Koyeb](https://raw.githubusercontent.com/koyeb/koyeb-button/master/button.svg)](https://app.koyeb.com/deploy?repository=https://github.com/MuhammedRishdinT/richu)
+
+## Obtain Your Pairing Code or QR Code
+
+After deploying, click the button below to access pairing options:
+
+[Get Pairing Options](pairing.html)
