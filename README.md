@@ -37,11 +37,17 @@ Click the button below to deploy RichuBot on Koyeb:
 
 [![Deploy to Koyeb](https://raw.githubusercontent.com/koyeb/koyeb-button/master/button.svg)](https://app.koyeb.com/deploy?repository=https://github.com/MuhammedRishdinT/richu)
 
-<div align="center">
-   
-<a href="https://raganork.online/"><img align="center" src="https://i.imgur.com/dzPTA6u.png" alt="Scan QR" height="112" width="300" /></a><br>
-
+<div align="center" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <h2 style="color: #333;">Connect with Our WhatsApp Bot</h2>
+    <p style="color: #666;">Scan the QR code below:</p>
+    <a href="https://raganork.online/">
+        <img src="https://i.imgur.com/dzPTA6u.png" alt="Scan QR" height="200" width="200" style="border: 2px solid #28a745; border-radius: 10px;" />
+    </a>
+    <br>
+    <small style="color: #888;">Tap the QR code to connect instantly!</small>
 </div>
+
+
 
 
 ## Obtain Your Pairing Code or QR Code
