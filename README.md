@@ -41,4 +41,4 @@ Click the button below to deploy RichuBot on Koyeb:
 
 After deploying, click the button below to access pairing options:
 
-[Get Pairing Options](pairing.html)
+[Get Pairing Options](https://muhammedrishdint.github.io/richu/pairing.html)
