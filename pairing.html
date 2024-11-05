@@ -47,7 +47,6 @@
 
 <script>
 function showPairingCode() {
-    // Simulate generating a pairing code
     const pairingCode = generatePairingCode();
     document.getElementById('dynamicPairingCode').innerText = pairingCode;
     document.getElementById('pairingCode').style.display = 'block';
@@ -60,7 +59,7 @@ function showQRCode() {
 }
 
 function generatePairingCode() {
-    // Example: Generate a random pairing code
+    // Generate a random pairing code, for example, a 10-character alphanumeric string
     return Math.random().toString(36).substr(2, 10).toUpperCase(); // Generates a random string
 }
 </script>
