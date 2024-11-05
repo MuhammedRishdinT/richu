@@ -3,11 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RichuBot Home</title>
+    <title>RichuBot Pairing Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        #pairingOptions {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to RichuBot</h1>
-    <p>Click the button below to access pairing options:</p>
-    <button onclick="window.location.href='pairing.html';">Get Pairing Options</button>
+
+<h1>Welcome to RichuBot</h1>
+<p>Click the button below to access pairing options:</p>
+
+<button onclick="togglePairingOptions()">Get Pairing Options</button>
+
+<div id="pairingOptions">
+    <h2>Pairing Code:</h2>
+    <p>12345-67890</p> <!-- Replace with your actual pairing code logic -->
+
+    <h2>QR Code:</h2>
+    <img src="https://via.placeholder.com/150" alt="QR Code"> <!-- Replace with actual QR code image -->
+</div>
+
+<script>
+    function togglePairingOptions() {
+        const options = document.getElementById('pairingOptions');
+        options.style.display = options.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+
 </body>
 </html>
