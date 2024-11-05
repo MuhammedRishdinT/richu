@@ -30,10 +30,9 @@
 <body>
 
 <h1>RichuBot Pairing Options</h1>
-<p>Click below to obtain your pairing code or QR code:</p>
+<p>Click below to obtain your pairing code for WhatsApp:</p>
 
-<button onclick="showPairingCode()">Get Pairing Code</button>
-<button onclick="showQRCode()">Get QR Code</button>
+<button onclick="getWhatsAppNumber()">Get Pairing Code</button>
 
 <div id="pairingCode">
     <h2>Your Pairing Code</h2>
@@ -46,21 +45,22 @@
 </div>
 
 <script>
-function showPairingCode() {
-    const pairingCode = generatePairingCode();
-    document.getElementById('dynamicPairingCode').innerText = pairingCode;
-    document.getElementById('pairingCode').style.display = 'block';
-    document.getElementById('qrCode').style.display = 'none';
+function getWhatsAppNumber() {
+    const whatsappNumber = prompt("Please enter your WhatsApp number (with country code):");
+    if (whatsappNumber) {
+        const pairingCode = generatePairingCode(whatsappNumber);
+        document.getElementById('dynamicPairingCode').innerText = pairingCode;
+        document.getElementById('pairingCode').style.display = 'block';
+    } else {
+        alert("WhatsApp number is required to generate a pairing code.");
+    }
 }
 
-function showQRCode() {
-    document.getElementById('qrCode').style.display = 'block';
-    document.getElementById('pairingCode').style.display = 'none';
-}
-
-function generatePairingCode() {
-    // Generate a random pairing code, for example, a 10-character alphanumeric string
-    return Math.random().toString(36).substr(2, 10).toUpperCase(); // Generates a random string
+function generatePairingCode(number) {
+    // Here you can create a custom pairing code based on the WhatsApp number
+    // For example, we'll just hash the number and return a string
+    // Note: This is just a placeholder logic for demonstration
+    return btoa(number + Math.random().toString(36).substring(2, 8)).slice(0, 15); // Base64 encode
 }
 </script>
 
