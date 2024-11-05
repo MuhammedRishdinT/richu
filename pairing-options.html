@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RichuBot Pairing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        #pairingCode, #qrCode {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>RichuBot Pairing Options</h1>
+<p>Click below to obtain your pairing code or QR code:</p>
+
+<button onclick="showPairingCode()">Get Pairing Code</button>
+<button onclick="showQRCode()">Get QR Code</button>
+
+<div id="pairingCode">
+    <h2>Your Pairing Code</h2>
+    <p>12345-67890</p> <!-- Replace with your actual pairing code logic -->
+</div>
+
+<div id="qrCode">
+    <h2>Your QR Code</h2>
+    <img src="https://via.placeholder.com/150" alt="QR Code"> <!-- Replace with actual QR code image -->
+</div>
+
+<script>
+function showPairingCode() {
+    document.getElementById('pairingCode').style.display = 'block';
+    document.getElementById('qrCode').style.display = 'none';
+}
+
+function showQRCode() {
+    document.getElementById('qrCode').style.display = 'block';
+    document.getElementById('pairingCode').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
+
