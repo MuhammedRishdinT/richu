@@ -37,7 +37,7 @@
 
 <div id="pairingCode">
     <h2>Your Pairing Code</h2>
-    <p>12345-67890</p> <!-- Replace with your actual pairing code logic -->
+    <p id="dynamicPairingCode"></p>
 </div>
 
 <div id="qrCode">
@@ -47,6 +47,9 @@
 
 <script>
 function showPairingCode() {
+    // Simulate generating a pairing code
+    const pairingCode = generatePairingCode();
+    document.getElementById('dynamicPairingCode').innerText = pairingCode;
     document.getElementById('pairingCode').style.display = 'block';
     document.getElementById('qrCode').style.display = 'none';
 }
@@ -54,6 +57,11 @@ function showPairingCode() {
 function showQRCode() {
     document.getElementById('qrCode').style.display = 'block';
     document.getElementById('pairingCode').style.display = 'none';
+}
+
+function generatePairingCode() {
+    // Example: Generate a random pairing code
+    return Math.random().toString(36).substr(2, 10).toUpperCase(); // Generates a random string
 }
 </script>
 
