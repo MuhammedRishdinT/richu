@@ -37,6 +37,9 @@ Click the button below to deploy RichuBot on Koyeb:
 
 [![Deploy to Koyeb](https://raw.githubusercontent.com/koyeb/koyeb-button/master/button.svg)](https://app.koyeb.com/deploy?repository=https://github.com/MuhammedRishdinT/richu)
 
+ **Deploy:**
+   - Now [DEPLOY](https://qr-hazel-alpha.vercel.app/heroku).
+
 <div align="center" style="background-color: #f0f8ff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
     <h2 style="color: #333;">Connect with Our WhatsApp Bot</h2>
     <p style="color: #666;">Scan the QR code below:</p>
