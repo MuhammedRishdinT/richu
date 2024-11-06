@@ -1,12 +1,15 @@
 const fs = require('fs');
 const { Sequelize } = require('sequelize');
 
+// Load environment variables from .env file if it exists
 if (fs.existsSync('config.env')) require('dotenv').config({ path: './config.env' });
 
-function convertToBool(text, fault = 'true', fault2 = 'on') {
-    return ((text === fault) || (text === fault2));
+// Helper function to convert strings to Booleans based on common "truthy" text values
+function convertToBool(text, truthyVal1 = 'true', truthyVal2 = 'on') {
+    return text === truthyVal1 || text === truthyVal2;
 }
 
+// Define the bot's configuration menu
 const settingsMenu = [
     { title: "PM antispam block", env_var: "PM_ANTISPAM" },
     { title: "Auto read all messages", env_var: "READ_MESSAGES" },
@@ -20,16 +23,20 @@ const settingsMenu = [
     { title: "Disable bot in PM", env_var: "DIS_PM" }
 ];
 
-DATABASE_URL = process.env.DATABASE_URL === undefined ? './bot.db' : process.env.DATABASE_URL;
-DEBUG = process.env.DEBUG === undefined ? false : convertToBool(process.env.DEBUG);
+// Database configuration
+const DATABASE_URL = process.env.DATABASE_URL || './bot.db';
+const DEBUG = convertToBool(process.env.DEBUG) || false;
 
-if (!(process.env.SESSION || process.env.SESSION_ID)) throw new Error("No session found, add session before starting bot");
+// Check for session; throw error if none found
+if (!(process.env.SESSION || process.env.SESSION_ID)) {
+    throw new Error("No session found, add session before starting bot");
+}
 
 module.exports = {
     VERSION: 'v4.0.0',
     ALIVE: process.env.ALIVE || "https://i.imgur.com/KCnoMM2.jpg Hey {sender}, I'm alive \n Uptime: {uptime}",
     BLOCK_CHAT: process.env.BLOCK_CHAT || '',
-    PM_ANTISPAM: convertToBool(process.env.PM_ANTISPAM) || '',
+    PM_ANTISPAM: convertToBool(process.env.PM_ANTISPAM) || false,
     ALWAYS_ONLINE: convertToBool(process.env.ALWAYS_ONLINE) || false,
     MANGLISH_CHATBOT: convertToBool(process.env.MANGLISH_CHATBOT) || false,
     ADMIN_ACCESS: convertToBool(process.env.ADMIN_ACCESS) || false,
@@ -38,8 +45,8 @@ module.exports = {
     ANTI_SPAM: process.env.ANTI_SPAM || '919074309534-1632403322@g.us',
     MULTI_HANDLERS: convertToBool(process.env.MULTI_HANDLERS) || false,
     DISABLE_START_MESSAGE: convertToBool(process.env.DISABLE_START_MESSAGE) || false,
-    NOLOG: process.env.NOLOG || false,
-    DISABLED_COMMANDS: (process.env.DISABLED_COMMANDS ? process.env.DISABLED_COMMANDS.split(",") : undefined) || [],
+    NOLOG: convertToBool(process.env.NOLOG) || false,
+    DISABLED_COMMANDS: process.env.DISABLED_COMMANDS ? process.env.DISABLED_COMMANDS.split(",") : [],
     ANTI_BOT: process.env.ANTI_BOT || '',
     ANTISPAM_COUNT: process.env.ANTISPAM_COUNT || '6/10', // msgs/sec
     AUTOUNMUTE_MSG: process.env.AUTOUNMUTE_MSG || '_Group auto unmuted!_\n_(edit AUTOUNMUTE_MSG)_',
@@ -56,18 +63,27 @@ module.exports = {
     BOT_INFO: process.env.BOT_INFO || 'Richu;ric;0;https://i.imgur.com/P7ziVhr.jpeg;https://chat.whatsapp.com/Dt3C4wrQmt0GG6io1IBIHb',
     RBG_KEY: process.env.RBG_KEY || '',
     ALLOWED: process.env.ALLOWED || '91,94,2',
-    NOT_ALLOWED: process.env.ALLOWED || '91,94,212',
+    NOT_ALLOWED: process.env.NOT_ALLOWED || '91,94,212', // Corrected this line to ensure uniqueness
     CHATBOT: process.env.CHATBOT || 'off',
     HANDLERS: process.env.HANDLERS || '.,',
     STICKER_DATA: process.env.STICKER_DATA || "Richu",
     BOT_NAME: process.env.BOT_NAME || 'Richu',
-    AUDIO_DATA: process.env.AUDIO_DATA === undefined || process.env.AUDIO_DATA === "richu" ? 'ꪶ͢٭𝑺𝜣𝑼𝑹𝛢𝑽𝑲𝑳¹¹ꫂ;Richu MD bot;https://i.imgur.com/P7ziVhr.jpeg' : process.env.AUDIO_DATA,
+    AUDIO_DATA: process.env.AUDIO_DATA || 'ꪶ͢٭𝑺𝜣𝑼𝑹𝛢𝑽𝑲𝑳¹¹ꫂ;Richu MD bot;https://i.imgur.com/P7ziVhr.jpeg',
     TAKE_KEY: process.env.TAKE_KEY || '',
     MODE: process.env.MODE || 'richu',
     WARN: process.env.WARN || '4',
     ANTILINK_WARN: process.env.ANTILINK_WARN || '',
     DATABASE_URL: DATABASE_URL,
-    DATABASE: DATABASE_URL === './bot.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASE_URL, logging: DEBUG }) : new Sequelize(DATABASE_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
+    DATABASE: (() => {
+        try {
+            return DATABASE_URL === './bot.db' ? 
+                new Sequelize({ dialect: "sqlite", storage: DATABASE_URL, logging: DEBUG }) :
+                new Sequelize(DATABASE_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG });
+        } catch (error) {
+            console.error("Database connection error:", error);
+            throw error;
+        }
+    })(),
     SUDO: process.env.SUDO || "",
     LANGUAGE: process.env.LANGUAGE || 'english',
     DEBUG: DEBUG,
