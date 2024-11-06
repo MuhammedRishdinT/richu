@@ -46,7 +46,10 @@ Click the button below to deploy RichuBot on Koyeb:
     <br>
     <small style="color: #888;">Tap the QR code to connect instantly!</small>
 </div>
+### 2. Deploy on Koyeb
 
+1. **Create an Account:**
+   - Create an account on [Koyeb](https://app.koyeb.com/auth/signup). [Sign up now](https://app.koyeb.com/auth/signup).
 
 
 
